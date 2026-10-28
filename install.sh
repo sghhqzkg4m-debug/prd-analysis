@@ -5,12 +5,14 @@ REPO_RAW="https://raw.githubusercontent.com/sghhqzkg4m-debug/prd-analysis/main"
 SKILLS=(prd-to-feishu-design prd-to-knowledge prd-to-ui-spec sangfor-cloud-console beautiful-feishu-whiteboard)
 SOURCE_DIR=""
 FORCE=0
+TARGET="codex"
 
 usage() {
   cat <<'EOF'
-Usage: bash install.sh [--source-dir REPO_DIR] [--force]
+Usage: bash install.sh [--target codex|trae] [--source-dir REPO_DIR] [--force]
 
-Installs the five bundled Codex skills into ${CODEX_HOME:-$HOME/.codex}/skills.
+Installs all five bundled skills. The default target is Codex.
+TRAE CN global skills are installed into ~/.trae-cn/skills.
 With --source-dir, reads packages from a local checkout instead of downloading.
 Existing different skills are preserved unless --force is given; --force backs them up.
 EOF
@@ -18,12 +20,19 @@ EOF
 
 while (($#)); do
   case "$1" in
+    --target) TARGET="${2:?missing target after --target}"; shift 2 ;;
     --source-dir) SOURCE_DIR="${2:?missing directory after --source-dir}"; shift 2 ;;
     --force) FORCE=1; shift ;;
     -h|--help) usage; exit 0 ;;
     *) echo "Unknown argument: $1" >&2; usage >&2; exit 2 ;;
   esac
 done
+
+case "$TARGET" in
+  codex) DEST="${CODEX_HOME:-$HOME/.codex}/skills" ;;
+  trae) DEST="$HOME/.trae-cn/skills" ;;
+  *) echo "Unsupported target: $TARGET (choose codex or trae)" >&2; exit 2 ;;
+esac
 
 if ! command -v tar >/dev/null || ! command -v curl >/dev/null; then
   echo "tar and curl are required." >&2
@@ -65,7 +74,6 @@ for skill in "${SKILLS[@]}"; do
   [[ -f "$WORK_DIR/extracted/$skill/SKILL.md" ]] || { echo "Missing SKILL.md: $skill" >&2; exit 1; }
 done
 
-DEST="${CODEX_HOME:-$HOME/.codex}/skills"
 mkdir -p "$DEST"
 for skill in "${SKILLS[@]}"; do
   if [[ -e "$DEST/$skill" && "$FORCE" -eq 0 ]] && ! diff -qr "$WORK_DIR/extracted/$skill" "$DEST/$skill" >/dev/null; then
@@ -91,4 +99,8 @@ for skill in "${SKILLS[@]}"; do
   echo "Installed: $skill"
 done
 [[ -z "$BACKUP" ]] || echo "Previous versions: $BACKUP"
-echo 'Done. Start a new Codex session and invoke $prd-to-feishu-design.'
+if [[ "$TARGET" == "trae" ]]; then
+  echo 'Done. Restart TRAE, then ask it to use prd-to-feishu-design.'
+else
+  echo 'Done. Start a new Codex session and invoke $prd-to-feishu-design.'
+fi
