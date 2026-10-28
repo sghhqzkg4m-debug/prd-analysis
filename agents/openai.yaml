@@ -1,0 +1,7 @@
+interface:
+  display_name: "PRD 到飞书设计交付"
+  short_description: "串联需求分析、页面规格、线框图与飞书原生组件化交付"
+  brand_color: "#0055A4"
+  default_prompt: "使用 $prd-to-feishu-design，把这份需求整理成交互设计分析、飞书组件化文档和 AI 页面生成规格。"
+policy:
+  allow_implicit_invocation: true
