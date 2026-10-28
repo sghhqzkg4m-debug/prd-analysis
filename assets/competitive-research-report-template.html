@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>竞品研究详报模板｜飞书分析框架 · 深信服风格</title>
+  <style>
+    :root{color-scheme:light;--blue:#285ed6;--blue-deep:#23479c;--green:#15a987;--ink:#1d3044;--text:#3e5165;--muted:#718398;--line:#e1ebf2;--page:#f7fbff;--paper:#fff;--radius:18px;--shadow:0 16px 44px rgba(31,82,129,.055)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:92px}body{margin:0;background:var(--page);color:var(--text);font:15px/1.85 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif;-webkit-font-smoothing:antialiased}a{color:var(--blue-deep);text-underline-offset:3px}a:focus-visible{outline:3px solid #83c9f9;outline-offset:3px}
+    .topbar{position:sticky;top:0;z-index:20;height:70px;background:rgba(255,255,255,.93);border-bottom:1px solid #e7eff6;backdrop-filter:blur(18px)}.topbar-inner{width:min(2200px,calc(100% - clamp(32px, 6vw, 160px)));height:100%;margin:auto;display:flex;align-items:center;gap:12px}.brand-mark{width:34px;height:30px;position:relative;flex:none}.brand-mark:before,.brand-mark:after{content:"";position:absolute;width:25px;height:11px;border-radius:20px;transform:rotate(-24deg)}.brand-mark:before{top:5px;left:4px;background:#2875dc}.brand-mark:after{top:16px;left:4px;background:#51b371}.brand-name{color:var(--ink);font-size:16px;font-weight:750}.brand-divider{height:20px;width:1px;background:#d9e6ee}.doc-kind{color:var(--muted);font-size:13px}.back{margin-left:auto;padding:6px 12px;border:1px solid #dce8f0;border-radius:10px;background:white;text-decoration:none;font-size:12px;font-weight:650;white-space:nowrap}
+    .hero{width:min(2200px,calc(100% - clamp(32px, 6vw, 160px)));margin:28px auto 30px;min-height:250px;padding:42px 52px 38px;border:1px solid #d9ebe9;border-radius:24px;background:radial-gradient(circle at 87% 22%,rgba(68,171,225,.14),transparent 32%),radial-gradient(circle at 69% 115%,rgba(52,181,135,.15),transparent 37%),linear-gradient(112deg,#fcfffd 0%,#f4fcf9 43%,#edf6ff 100%);box-shadow:0 18px 44px rgba(33,97,114,.065)}.kicker{display:flex;align-items:center;gap:9px;color:var(--blue-deep);font-size:12px;font-weight:750;letter-spacing:.06em}.kicker:before{content:"";width:21px;height:3px;border-radius:5px;background:linear-gradient(90deg,var(--blue),var(--green))}.hero h1{color:var(--ink);font-size:clamp(30px,3vw,42px);line-height:1.22;letter-spacing:-.035em;margin:18px 0 11px}.hero p{max-width:750px;color:#65798d;margin:12px 0 20px}.meta{display:flex;gap:8px;flex-wrap:wrap}.meta span{padding:3px 10px;color:#50708f;background:rgba(255,255,255,.78);border:1px solid #e0ebf5;border-radius:8px;font-size:12px}
+    .wrap{width:min(2200px,calc(100% - clamp(32px, 6vw, 160px)));margin:auto;display:grid;grid-template-columns:230px minmax(0,1fr);align-items:start;gap:24px;padding-bottom:65px}.nav{grid-column:1;grid-row:1/span 4;position:sticky;top:94px;max-height:calc(100vh - 115px);overflow:auto;display:flex;flex-direction:column;padding:18px 13px;border:1px solid var(--line);border-radius:var(--radius);background:rgba(255,255,255,.88);box-shadow:0 7px 24px rgba(47,91,132,.035)}.nav:before{content:"研究目录 · CONTENTS";padding:0 12px 11px;color:#8595a5;font-size:11px;font-weight:750;letter-spacing:.09em}.nav a{padding:7px 12px;border-radius:8px;color:#647789;text-decoration:none;font-size:12.5px;line-height:1.55}.nav a:hover{background:#edf5ff;color:var(--blue-deep)}
+    section{grid-column:2;min-width:0;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:34px 38px 38px;margin:0;box-shadow:var(--shadow);scroll-margin-top:90px}h2{color:var(--ink);font-size:24px;line-height:1.35;letter-spacing:-.02em;margin:0 0 18px}h3{color:#20364c;font-size:16px;margin:27px 0 10px;scroll-margin-top:90px}p{margin:0 0 14px}ul{padding-left:22px;margin:9px 0 16px}li{margin:4px 0}.lead{color:#344e63;font-size:16px;line-height:1.9}.small{color:var(--muted);font-size:13px}.note{margin:19px 0;padding:16px 19px;border:1px solid #cde6f9;border-left:3px solid var(--blue);border-radius:0 12px 12px 0;background:#f5faff;font-size:13px}.warning{border-color:#f4e5bf;border-left-color:#d3a455;background:#fff9eb}
+    .table-wrap{width:100%;overflow-x:auto;border:1px solid var(--line);border-radius:11px;margin:16px 0}table{width:100%;border-collapse:collapse;min-width:640px;font-size:12.5px;line-height:1.65}th,td{padding:12px 14px;border-bottom:1px solid #eaf0f4;text-align:left;vertical-align:top}th{color:#536b80;background:#f5faff;font-weight:700;white-space:nowrap}td:first-child{color:#29485f;font-weight:650}tbody tr:nth-child(even){background:#fcfdff}tr:last-child td{border-bottom:0}
+    .cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.card{padding:19px 20px;border:1px solid #d3e4fa;border-radius:12px;background:#f8fbff}.card:nth-child(2){border-color:#cfebe3;background:#f6fffb}.card h3{margin:0 0 8px}.card p{margin:0 0 8px;color:#567084;font-size:13px}.card p:last-child{margin:0}.product-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:18px 0}.product-card{padding:18px 19px;border:1px solid #dce8f2;border-radius:12px;background:#fafdff}.product-card:nth-child(2){background:#f7fcfa;border-color:#d5ebe3}.product-card h3{margin:4px 0 10px;font-size:16px}.product-card p{margin:0 0 9px;color:#557087;font-size:13px;line-height:1.7}.product-card p strong{color:#2c506c}.product-card a{font-size:12px;font-weight:700}.product-code{color:var(--blue-deep);font-size:11px;font-weight:750}.research-list{display:grid;gap:16px;margin:20px 0}.research-item{padding:24px;border:1px solid #d9e7f2;border-radius:15px;background:#fbfdff;scroll-margin-top:90px}.research-item:nth-child(even){background:#f8fcfa;border-color:#d4e9e1}.research-item h3{margin:3px 0 8px;font-size:19px}.research-item .research-q{color:#2c4c65;font-size:14px;font-weight:650}.research-item .research-meta{color:#6b8091;font-size:12px}.reference-title{margin:18px 0 9px;color:#315c86;font-size:13px;font-weight:750}.reference-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.reference-card{padding:14px 15px;border:1px solid #dfebf2;border-radius:10px;background:#fff}.reference-card h4{margin:0 0 5px;color:#2b4d66;font-size:13px;line-height:1.5}.reference-card p{margin:0 0 5px;color:#536d80;font-size:12.5px;line-height:1.7}.reference-card p:last-child{margin:0}.reference-card .boundary{color:#718498}.reference-card .full-page-link{margin-top:10px;padding-top:9px;border-top:1px solid #e6eff4;color:#647f91;font-size:12px}.reference-card .full-page-link a{font-weight:700}.research-steps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;margin-top:14px}.research-step{padding:14px 15px;border:1px solid #e3edf4;border-radius:10px;background:#fff}.research-step strong{display:block;margin-bottom:6px;color:#315c86;font-size:12px}.research-step p{margin:0;color:#526c80;font-size:13px;line-height:1.72}.research-step a{font-weight:700}.insight-list{display:grid;gap:11px}.insight-card{padding:18px 20px;border:1px solid #dce8f2;border-radius:12px;background:#fbfdff}.insight-card h3{margin:0 0 9px;font-size:16px}.insight-card p{margin:0 0 7px;font-size:13px;line-height:1.72}.insight-card p:last-child{margin:0}.insight-card strong{color:#2f536e}.insight-card .limit{color:#74879a}.section-guide{margin:-5px 0 18px;color:#687e90;font-size:13px}.evidence-gallery{display:grid;grid-template-columns:1fr;gap:14px;margin:18px 0}.evidence-figure{margin:13px 0 0;padding:12px;border:1px solid #dce8f1;border-radius:13px;background:#fbfdff;scroll-margin-top:90px}.evidence-figure img{display:block;width:100%;height:auto;border:1px solid #e8eef3;border-radius:8px;background:#fff}.evidence-figure figcaption{padding:12px 3px 2px;color:#587084;font-size:12px;line-height:1.7}.evidence-figure figcaption strong{display:block;margin-bottom:4px;color:#2a455b;font-size:13px}.evidence-figure figcaption span{display:block}.evidence-figure figcaption a{font-weight:700}.fold{border:1px solid var(--line);border-radius:12px;background:#fbfdff;padding:0 16px}.fold summary{cursor:pointer;padding:14px 0;color:#315c86;font-size:13px;font-weight:700}.fold summary::marker{color:var(--blue)}.fold .table-wrap{margin:0 0 16px}.fold p{font-size:13px}.status-strip{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.status-strip span{padding:5px 10px;border-radius:7px;background:#eff6fc;color:#536f83;font-size:12px}.status-strip strong{color:#284b63}footer{grid-column:2;color:var(--muted);font-size:12px;padding:5px 2px}
+    @media(max-width:900px){.topbar-inner,.hero,.wrap{width:calc(100% - 36px)}.wrap{grid-template-columns:185px minmax(0,1fr);gap:17px}section{padding:27px 25px}}
+    @media(max-width:700px){.topbar{height:60px}.topbar-inner,.hero,.wrap{width:calc(100% - 28px)}.brand-name{font-size:14px}.doc-kind,.brand-divider{display:none}.back{font-size:11px;padding:5px 8px}.hero{margin:17px auto;padding:26px 23px;min-height:0;border-radius:18px}.hero h1{font-size:25px}.wrap{display:block;padding-bottom:35px}.nav{position:static;max-height:none;flex-direction:row;flex-wrap:wrap;gap:4px;padding:12px;margin:0 0 15px;border-radius:14px}.nav:before{width:100%;padding:0 6px 4px}.nav a{padding:5px 8px;background:#f5faff}.cards,.product-grid,.reference-grid,.research-steps,.evidence-gallery{grid-template-columns:1fr}.research-item{padding:17px}section{padding:22px 20px;margin:0 0 15px}h2{font-size:21px}}
+    @media(max-width:700px){.table-wrap{border:0;overflow:visible}table{min-width:0;display:block}thead{display:none}tbody{display:grid;gap:10px}tr{display:block;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff!important}td{display:block;padding:9px 12px;border-bottom:1px solid #edf2f6}td:last-child{border-bottom:0}td:first-child{background:#f5faff;font-size:13px}td:not(:first-child)::before{content:attr(data-label);display:block;color:var(--muted);font-size:11px;font-weight:700;margin-bottom:2px}}
+    @media print{body{background:white}.topbar,.nav{display:none}.hero{box-shadow:none;margin:0 auto 15px}.wrap{display:block}section{box-shadow:none;break-inside:avoid;margin:0 0 15px}}
+  
+/* Template-only evidence slot; replace with a real image/link when evidence exists. */
+.evidence-slot{min-height:190px;display:grid;place-items:center;padding:22px;border:1px dashed #8bb9c3;border-radius:9px;background:repeating-linear-gradient(135deg,#f4fafb,#f4fafb 12px,#edf5f7 12px,#edf5f7 24px);color:#517184;text-align:center;font-size:13px}
+</style>
+</head>
+<body>
+<!-- 模板使用说明：复制本文件到项目 output 后再填写。替换所有 [...]；按研究问题复制 .question-basis 与 .research-item，并让跳转锚点一一对应。删除没有证据支持的条件内容，不填虚构产品、截图或评分。不要修改本资产作为单个项目交付。 -->
+<div class="topbar"><div class="topbar-inner"><span class="brand-mark" aria-hidden="true"></span><span class="brand-name">交互设计分析</span><span class="brand-divider"></span><span class="doc-kind">竞品研究详报</span><a class="back" data-template-href="主需求分析.html#competition">← 返回需求分析</a></div></div>
+<header class="hero">
+  <div class="kicker">COMPETITIVE RESEARCH</div>
+  <h1>[研究主题]<br>竞品研究详报</h1>
+  <p>[用两句话说明研究对象、关键任务、这份详报能回答什么；明确公开资料与实测的边界。]</p>
+  <div class="meta"><span>研究阶段：[公开资料／试用／用户测试]</span><span>资料复核：[日期]</span><span>体验评分：[完整／局部／证据不足]</span></div>
+</header>
+<div class="wrap">
+  <nav class="nav" aria-label="本页目录"><a href="#questions">研究依据与问题</a><a href="#comparison">逐问研究</a><a href="#decisions">取舍与验证</a><a href="#evidence">证据与来源</a></nav>
+
+  <section id="questions">
+    <h2>为什么研究这些问题</h2>
+    <p class="lead">[从需求输入、任务断点、风险或待决策项说明研究范围。不要从竞品功能清单倒推问题。]</p>
+    <div class="product-grid">
+      <!-- 复制此卡片：每个关键研究问题有一个依据卡片，并链接到同名研究单元。 -->
+      <article class="product-card question-basis"><span class="product-code">[问题依据的语义名称]</span><h3>[具体断点或设计疑问]</h3><p><strong>已知输入：</strong>[可追溯的需求或现状事实]</p><p><strong>研究问题：</strong>[一句可通过证据回答的问题]</p><a href="#research-example">查看对应研究 →</a></article>
+    </div>
+    <p class="small">[需求输入来源、Case 或主报告的对应位置；说明尚未核查的现状。]</p>
+    <h3>用同一任务口径比较</h3>
+    <div class="cards">
+      <!-- 根据实际 Case 复制或删除；每张卡片写相同口径的起点和完成标准。 -->
+      <div class="card"><h3>[用户任务／场景名称]</h3><p><strong>使用者：</strong>[角色与权限条件]</p><p><strong>起点：</strong>[任务触发、已有对象与前置条件]</p><p><strong>完成：</strong>[可观察的业务完成结果]</p></div>
+    </div>
+    <div class="note">研究深度：[快速扫描／聚焦分析]。依据：[功能重要性、决策成本、未知项和风险的简要理由]。研究投入判断不等于产品体验评分。</div>
+  </section>
+
+  <section id="comparison">
+    <h2>按研究问题逐项讲解</h2>
+    <p class="lead">每个问题连续呈现选题依据、相关产品功能与证据、当前判断、设计取舍和下一步验证。产品页面与截图直接放在所回答的问题旁。</p>
+    <div class="research-list">
+      <!-- 复制整个 .research-item：每个问题一个连续单元。给 id 使用稳定语义 slug，并同步更新上方卡片链接。 -->
+      <article class="research-item" id="research-example">
+        <span class="product-code">[研究问题的语义名称]</span>
+        <h3>[完整研究问题]</h3>
+        <p class="research-q">来自[需求事实或任务断点]；回答此问题将影响[对象／入口／流程／状态／权限／恢复等具体决策]。</p>
+        <div class="reference-title">对应参照与证据</div>
+        <div class="reference-grid">
+          <!-- 每个入选产品／现状替代方案各一张卡，只写与本问题相关的功能。 -->
+          <div class="reference-card"><h4>[参照产品或现状方案名称]</h4><p><strong>为什么选：</strong>[与本任务相似的机制及适用条件]。</p><p><strong>功能内容：</strong>[可观察的操作、对象、状态或规则，注明来源]。</p><p class="boundary"><strong>证据边界：</strong>[现有资料能证明什么、不能证明什么]。</p><p class="full-page-link">完整页面：[真实功能页可取得时，链接可打开原尺寸的完整页面；跨页任务逐页保存。只有官网介绍或文档时明确标为公开资料，并提供完整原页面或全页留档。]</p></div>
+        </div>
+        <!-- 有可核查页面或截图时替换此 figure 内的占位区；没有图则删除整个 figure，并在证据边界写明缺口。 -->
+        <figure class="evidence-figure"><div class="evidence-slot">[真实产品页面的完整截图／官方演示／公开资料截图]<br>这里放可打开原尺寸的图片与原页面链接</div><figcaption><strong>[截图标题与证据类型]</strong><span>图中可见：[只描述实际可见内容]。体验推断：[推断及其限制]。对我方的启发：[影响的设计问题]。</span><span>来源：[产品／版本、角色、触发条件、访问方式、链接和截取日期]。</span></figcaption></figure>
+        <div class="research-steps">
+          <div class="research-step"><strong>目前能判断什么</strong><p>[观察事实 → 对用户任务的影响 → 能支持的结论及缺口；不得把未找到写成不支持。]</p></div>
+          <div class="research-step"><strong>我方设计取舍</strong><p>[借鉴／改造／不采用／延后什么，为什么；落实到哪个方案部分。]</p></div>
+          <div class="research-step"><strong>下一步验证</strong><p>[谁在什么条件下执行何任务、观察什么、满足什么标准后可确认判断。]</p></div>
+        </div>
+      </article>
+    </div>
+    <!-- 条件内容：只有跨产品同任务对照能增加判断时才保留。按任务阶段比较，不为填表而比较。 -->
+    <details class="fold"><summary>展开同任务阶段对照</summary>
+      <p class="section-guide">[说明统一的角色、起点、条件和完成标准；“未核查”不等于产品不支持。]</p>
+      <div class="table-wrap"><table><thead><tr><th>任务阶段</th><th>[参照方案]</th><th>[本产品或另一参照]</th><th>对设计的影响</th></tr></thead><tbody><tr><td>[阶段名称]</td><td>[可核查的观察]</td><td>[可核查的观察或未核查]</td><td>[差异原因、适用边界或待确认问题]</td></tr></tbody></table></div>
+    </details>
+  </section>
+
+  <section id="decisions">
+    <h2>设计取舍与后续验证</h2>
+    <p class="section-guide">上文逐问解释因果；这里仅汇总需要评审的取舍及下一轮任务，不重复产品介绍。</p>
+    <div class="table-wrap"><table><thead><tr><th>设计取舍</th><th>证据与判断</th><th>本项目落点</th><th>状态</th></tr></thead><tbody><tr><td>[语义名称]</td><td>[来源事实 → 限定判断]</td><td>[拟采纳、调整或延后的具体内容]</td><td>[已确定／待评审／待验证]</td></tr></tbody></table></div>
+    <h3>下一轮如何验证</h3>
+    <div class="table-wrap"><table><thead><tr><th>优先级</th><th>任务</th><th>需记录的证据</th><th>通过后可回答什么</th></tr></thead><tbody><tr><td>[优先核查／后续验证]</td><td>[具体任务]</td><td>[版本、角色、权限、操作与反馈]</td><td>[具体待决策问题]</td></tr></tbody></table></div>
+  </section>
+
+  <section id="evidence">
+    <h2>证据可信度与来源</h2>
+    <p class="section-guide">[说明完整任务证据覆盖程度与评分边界；证据不足时明确不计算总分。]</p>
+    <div class="note warning">[区分官方产品页、真实界面、连续操作文档、实测与用户陈述；说明每种资料不能证明的体验或安全结果。]</div>
+    <!-- 评分表为条件内容：只有具体功能维度已取得足够证据时保留，不为生成总分补印象分。 -->
+    <details class="fold"><summary>展开功能体验评分与证据缺口</summary><div class="table-wrap"><table><thead><tr><th>体验维度</th><th>参照功能</th><th>观察事实与影响</th><th>可信度与缺口</th></tr></thead><tbody><tr><td>[适用维度]</td><td>[局部分数或未核查]</td><td>[事实 → 用户影响 → 评分理由]</td><td>[证据类型与尚缺环节]</td></tr></tbody></table></div></details>
+    <h3>来源与结论边界</h3>
+    <ul><li>[一手来源名称、链接、版本或访问条件、复核日期、支持的具体结论]</li></ul>
+  </section>
+  <footer>[研究主题] · 竞品研究详报 · [更新日期]</footer>
+</div>
+<script>document.querySelectorAll('table').forEach(table=>{const labels=[...table.querySelectorAll('thead th')].map(cell=>cell.textContent.trim());table.querySelectorAll('tbody tr').forEach(row=>[...row.cells].forEach((cell,index)=>cell.setAttribute('data-label',labels[index]||'')));});</script>
+
+</body>
+</html>
