@@ -6,7 +6,7 @@
 
 仅粘贴 GitHub 链接不会自动安装 Skill。请把链接和下面这段话一起发给 TRAE：
 
-> 请打开 https://github.com/sghhqzkg4m-debug/prd-analysis ，阅读 README，然后按其中的 TRAE 安装方式安装仓库内全部 5 个 Skill。不要只根据链接重新生成一个 Skill。安装后检查 `~/.trae-cn/skills/prd-to-feishu-design/SKILL.md` 及另外 4 个 Skill 的 `SKILL.md` 均存在，再告诉我如何开始使用。
+> 请打开 https://github.com/sghhqzkg4m-debug/prd-analysis ，阅读 README，然后按其中的 TRAE 安装方式安装仓库内全部 5 个 Skill。不要只根据链接重新生成一个 Skill。如果已有同名 Skill 且内容不同，先问我是否替换，不要擅自使用 `--force`。安装后检查 `~/.trae-cn/skills/prd-to-feishu-design/SKILL.md` 及另外 4 个 Skill 的 `SKILL.md` 均存在，再告诉我如何开始使用。
 
 也可以在 TRAE 的终端亲自执行一条命令：
 
@@ -32,7 +32,7 @@ curl -fsSL https://raw.githubusercontent.com/sghhqzkg4m-debug/prd-analysis/main/
 - `sangfor-cloud-console`：深信服控制台页面与组件参考
 - `beautiful-feishu-whiteboard`：飞书白板视觉与可编辑图形
 
-安装后开启一个新的 Codex 会话，使用 `$prd-to-feishu-design`。已有同名 Skill 且内容不同时，脚本会停止，避免覆盖本地修改。确认需要替换时，先下载仓库，再运行 `bash install.sh --source-dir . --force`；旧版本会备份到目标技能目录的 `.backup/` 下。TRAE 用户替换时加上 `--target trae`。
+安装后开启一个新的 Codex 会话，使用 `$prd-to-feishu-design`。如果已安装同名 Skill 且内容相同，脚本会跳过；内容不同且有交互终端时，会列出冲突项并询问是否备份和替换。选择否会在改动任何 Skill 前停止。没有交互终端时也会停止；只有用户明确同意替换后，才应加 `--force` 重试。旧版本备份在目标技能目录的 `.backup/` 下。
 
 也可以先克隆仓库，再执行 `bash install.sh --source-dir .`。这种方式使用仓库内的归档，不会再次下载。
 

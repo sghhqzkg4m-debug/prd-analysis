@@ -14,7 +14,8 @@ Usage: bash install.sh [--target codex|trae] [--source-dir REPO_DIR] [--force]
 Installs all five bundled skills. The default target is Codex.
 TRAE CN global skills are installed into ~/.trae-cn/skills.
 With --source-dir, reads packages from a local checkout instead of downloading.
-Existing different skills are preserved unless --force is given; --force backs them up.
+If installed skills differ, asks before backing them up and replacing them.
+Without an interactive terminal, stops unless --force is given.
 EOF
 }
 
@@ -75,12 +76,30 @@ for skill in "${SKILLS[@]}"; do
 done
 
 mkdir -p "$DEST"
+CONFLICTS=()
 for skill in "${SKILLS[@]}"; do
-  if [[ -e "$DEST/$skill" && "$FORCE" -eq 0 ]] && ! diff -qr "$WORK_DIR/extracted/$skill" "$DEST/$skill" >/dev/null; then
-    echo "Existing skill differs: $DEST/$skill (use --force to back it up and replace it)" >&2
-    exit 1
+  if [[ -e "$DEST/$skill" ]] && ! diff -qr "$WORK_DIR/extracted/$skill" "$DEST/$skill" >/dev/null; then
+    CONFLICTS+=("$skill")
   fi
 done
+
+if ((${#CONFLICTS[@]} > 0)) && ((FORCE == 0)); then
+  echo "These installed skills differ from the bundle:" >&2
+  for skill in "${CONFLICTS[@]}"; do
+    echo "  $DEST/$skill" >&2
+  done
+  if [[ ! -t 2 ]]; then
+    echo "No interactive terminal is available; no skills were changed. Re-run with --force only after approving replacement." >&2
+    exit 1
+  fi
+  printf 'Back up and replace all listed skills? [y/N] ' > /dev/tty
+  answer=""
+  read -r answer < /dev/tty || true
+  case "$answer" in
+    y|Y|yes|YES|Yes) ;;
+    *) echo "Cancelled; no skills were changed." >&2; exit 1 ;;
+  esac
+fi
 
 BACKUP=""
 for skill in "${SKILLS[@]}"; do
