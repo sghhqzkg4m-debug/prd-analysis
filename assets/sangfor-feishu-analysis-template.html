@@ -216,6 +216,7 @@
     .job-caption { margin-bottom: 8px; color: var(--blue); font-size: 11px; font-weight: 780; letter-spacing: .1em; }
     .job-box p { margin: 0; color: #284860; font-size: 16px; font-weight: 650; line-height: 1.75; }
     .case-block { padding: 20px 22px; border: 1px solid #dfeaf2; border-radius: 13px; background: #fff; }
+    .case-block + .case-block { margin-top: 20px; }
     .case-head { display: flex; align-items: center; gap: 9px; margin-bottom: 11px; }
     .case-head h3 { margin: 0; }
     .case-no { color: #168fca; font-size: 11px; font-weight: 780; }
@@ -331,18 +332,26 @@
     .ia-node::before { content: ""; position: absolute; left: 50%; top: -13px; height: 13px; border-left: 1px solid #a8c9df; }
     .ia-node strong { display: block; margin-bottom: 8px; color: #29485f; font-size: 13px; }
     .ia-node span { display: block; margin-top: 5px; color: #71879a; font-size: 11px; }
-    .process-map { margin: 16px 0 26px; padding: 20px; overflow: hidden; border: 1px solid #d9e8f4; border-radius: 14px; background: #fbfdff; }
-    .process-boundary { margin-bottom: 14px; color: #567087; font-size: 12px; }
-    .process-lane { display: grid; grid-template-columns: 110px repeat(3,minmax(0,1fr)); gap: 22px; align-items: stretch; margin: 12px 0; }
-    .process-role { display: grid; place-items: center; padding: 14px; border-radius: 10px; color: #fff; background: #2867b2; font-size: 12px; font-weight: 720; text-align: center; }
-    .process-lane.collaborator .process-role { background: #198a79; }
-    .process-node { position: relative; min-height: 104px; padding: 15px; border: 1px solid #cfe0ee; border-radius: 10px; background: #eef6ff; color: #426078; font-size: 12px; line-height: 1.6; }
-    .process-lane.collaborator .process-node { background: #f1fbf6; border-color: #cee9dd; }
-    .process-node strong { display: block; margin-bottom: 6px; color: #24537c; font-size: 13px; }
-    .process-node:not(:last-child)::after { content: "→"; position: absolute; right: -18px; top: 40%; color: #6b9fc7; font-size: 18px; }
-    .process-node.error { grid-column: 2 / 5; min-height: auto; background: #fff9ec; border-color: #efdcae; }
-    .process-node.error::after { content: "↩"; }
-    .process-divider { margin: 16px 0; border-top: 1px dashed #bbcfdd; }
+    .process-map { margin: 16px 0 26px; padding: 20px; border: 1px solid #d9e8f4; border-radius: 14px; background: #fbfdff; }
+    .process-boundary { margin-bottom: 18px; color: #567087; font-size: 12px; }
+    .process-flow { overflow-x: auto; padding-bottom: 5px; }
+    .process-grid { position: relative; display: grid; grid-template-columns: 96px repeat(var(--process-cols), minmax(190px,1fr)); gap: 16px 42px; align-items: start; min-width: max(100%, var(--process-min-width, 780px)); padding: 8px 12px 70px; }
+    .process-links { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+    .process-links > path { fill: none; stroke: #6b9fc7; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .process-links > path.return { stroke: #c18a2a; stroke-width: 1.6; stroke-dasharray: 5 4; }
+    .process-role { position: relative; z-index: 1; display: grid; place-items: center; align-self: stretch; justify-self: stretch; min-height: 112px; padding: 12px; border: 1px solid #cfe2f2; border-radius: 10px; background: #eaf3fb; color: #315f83; font-size: 12px; font-weight: 750; line-height: 1.4; text-align: center; }
+    .process-role.collaborator { border-color: #c9e8dd; background: #eaf8f2; color: #257263; }
+    .process-cell { position: relative; z-index: 1; min-width: 0; align-self: start; }
+    .process-cell.empty { min-height: 1px; }
+    .process-node { min-width: 0; padding: 14px 16px; border: 1px solid #cfe0ee; border-radius: 10px; background: #eef6ff; color: #426078; font-size: 12px; line-height: 1.6; }
+    .process-cell.collaborator .process-node { background: #f1fbf6; border-color: #cee9dd; }
+    .process-node strong { display: block; margin-bottom: 5px; color: #24537c; font-size: 13px; }
+    .process-meta { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 7px; }
+    .process-meta span { padding: 2px 7px; border-radius: 5px; background: #dceaf8; color: #3d6484; font-size: 10px; }
+    .process-branch { margin-top: 10px; padding: 10px 12px; border-left: 3px solid #d69a2d; border-radius: 0 7px 7px 0; background: #fff8ec; color: #725b3a; }
+    .process-branch strong { display: inline; margin: 0; color: #8a621c; font-size: 11px; }
+    .process-branch span { display: block; margin-top: 3px; }
+    .process-branch em { display: block; margin-top: 4px; color: #9a6e25; font-style: normal; font-weight: 700; }
     .wireframe-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px; margin: 16px 0 26px; }
     .wireframe { overflow: hidden; border: 1px solid #d8e5ee; border-radius: 12px; background: #fff; box-shadow: 0 8px 22px rgba(35,78,118,.05); }
     .wf-head { display: flex; align-items: center; justify-content: space-between; padding: 10px 12px; border-bottom: 1px solid #e4edf3; background: #f5f8fb; color: #36536a; font-size: 11px; font-weight: 720; }
@@ -359,7 +368,7 @@
     .wf-field { margin: 8px 0; padding: 8px; }
     @media (max-width: 900px) { .journey-context { grid-template-columns: 1fr 1fr; } .journey-context > div:nth-child(3) { border-left: 0; border-top: 1px solid #e6eef4; } .journey-context > div:nth-child(4) { border-top: 1px solid #e6eef4; } }
     @media (max-width: 760px) { .journey-context { grid-template-columns: 1fr; } .journey-context > div { border-left: 0; border-top: 1px solid #e6eef4; } .journey-context > div:first-child { border-top: 0; } .journey-handoffs { grid-template-columns: 1fr; } }
-    @media (max-width: 760px) { .ia-branches,.wireframe-grid { grid-template-columns: 1fr; } .ia-branches::before,.ia-node::before { display: none; } .ia-root { margin-left: 0; } .process-map { overflow-x: auto; } .process-lane { min-width: 760px; } }
+    @media (max-width: 760px) { .ia-branches,.wireframe-grid { grid-template-columns: 1fr; } .ia-branches::before,.ia-node::before { display: none; } .ia-root { margin-left: 0; } .process-map { padding: 14px; } }
   </style>
 </head>
 <body>
@@ -409,9 +418,9 @@
 
       <main class="document" id="main-content">
         <section class="chapter" id="business">
-          <div class="chapter-head"><span class="chapter-index">01</span><div><h2>业务问题与业务目标</h2><p class="chapter-desc">先解释为什么现在做，以及本期希望产生什么业务结果。</p></div></div>
-          <p><strong>业务问题：</strong>[当前业务在什么场景中遇到什么问题；问题来自哪些已确认的需求、反馈或产品证据。]</p>
-          <p><strong>业务目标：</strong>[本期希望支持的业务结果。例如让目标用户能够完成某类业务任务，而非只描述“新增一个页面”。]</p>
+          <div class="chapter-head"><span class="chapter-index">01</span><div><h2>业务问题与业务目标</h2><p class="chapter-desc">先说明用户要取得的业务进步，再解释现状阻碍与本期结果。</p></div></div>
+          <p><strong>业务问题：</strong>[当哪类客户或项目需要完成什么业务任务时，现有交付或使用方式遇到哪些有证据的障碍；这些障碍如何影响能力到达目标环境或持续可用。先写任务与影响，再写产品缺口，不凭空推测情绪、频次或损失。]</p>
+          <p><strong>业务目标：</strong>[本期要让目标对象发生什么可观察的业务变化，首期用什么场景验证结果；说明对现状依赖或负担的改善，不把页面、控件或功能清单当作目标。无可靠基线时不编目标数值。]</p>
           <p class="evidence-line"><span class="source-tag">来源</span>[PRD / 访谈 / 现网数据及日期]　<span class="source-tag unknown">待确认</span>[如果关键前提尚未确认，写明核查动作]</p>
           <h3>版本定位与关键前提 <span class="chip gray">条件必需</span></h3>
           <p>[存在替代、迁移或多版本关系时，说明本期与已有版本的关系；如果某个全局前提会影响任务是否成立，在此提前说明。]</p>
@@ -425,17 +434,18 @@
           <p><strong>关键角色：</strong>[主要执行者]负责[任务动作]；[协作角色]在[触发条件]下接收[交接物 / 结果]。岗位归属没有证据时标为待确认。</p>
           <p><strong>目标客户特征：</strong>[行业、规模等画像仅在影响任务或设计时填写；无依据时不编造。] <span class="chip gray">可选</span></p>
           <div class="job-box"><div class="job-caption">JOB 01 · 结果导向的任务</div><p>[用户角色]需要在[业务场景]下，完成[任务]，以达成[可观察的业务结果]。</p></div>
-          <p>每个 Case 按“业务／产品目标 → 设计重点 → 设计目标”呈现。业务／产品目标用一条完整表述，将该 Case 支撑的业务结果与角色期望的体验变化自然结合，不另列“体验目标”，也不提前写设计手段。设计目标再用一两句话写清场景、角色、关键设计手段和预期改善。手段写机制，不列控件或步骤；可按证据和任务特点选前后变化式、关键决策式或协作交接式。详细策略、完成标识和验证方法在后文展开。</p>
+          <p>每个 Case 按“业务／产品目标 → 设计重点 → 设计目标”呈现。写目标前先校准 JOB：任务是否支持用户在具体情境中取得进步，范围是否适合本期；再从用户为取得进步而追求的体验中，选出与业务结果直接相关的诉求。这是编写前的检查，不是要写进目标正文的措辞。业务／产品目标按“情境与任务 → 可观察的业务结果 → 角色的体验变化”合写，不提前写设计手段；有现状证据时，保留“从现状负担转向目标体验”，没有证据时只写期望改善。设计目标按“关键环节 → 设计机制 → 判断、行动或结果理解 → 明确的体验品质”书写，并与业务／产品目标中的体验诉求一致。检查体验品质是否可衡量、是否形成有价值的差异、是否符合产品价值主张并照顾用户情感因素；缺证据时不编造优势或数值。详细策略、完成标识和验证方法在后文展开。</p>
           <div class="section-rule"></div>
           <div class="case-block">
             <div class="case-head"><span class="case-no">CASE 01</span><h3>[具体情境下的任务场景]</h3></div>
             <p>[在什么情境下，完成什么任务。一个 Case 对应一种触发条件、协作路径或完成结果；不要把连续步骤拆成多个 Case。]</p>
             <div class="case-facts"><div><strong>起点 / 前提</strong>[用户已有的条件与信息]</div><div><strong>参与与交接</strong>[角色、交接物及接收方]</div><div><strong>完成标识</strong>[可以观察到的真实结果]</div></div>
             <div class="goal-chain" aria-label="本 Case 的目标推导">
-              <div class="info-card blue"><div class="card-topline"></div><h4>业务／产品目标</h4><p>[在该 Case 的具体场景中，让相关角色以怎样的理解、预期、负担或恢复体验完成任务，从而支撑什么业务结果；合写成一条自然的目标，不另列体验目标，也不写设计手段]</p></div>
+              <div class="info-card blue"><div class="card-topline"></div><h4>业务／产品目标</h4><p>让[业务对象／用户]在[具体情境]下完成[本 Case 的任务]，取得[可观察的业务结果]；同时使[关键角色]从[有证据的现状负担]转向[其追求的目标体验]。<br><small>没有现状证据时，改写为期望获得的目标体验，不虚构“从……到……”。</small></p></div>
               <div class="goal-bridge"><span><strong>目标诉求 → 设计重点：</strong>[为同时实现上述业务结果和用户体验，设计最需要解决的关键问题]</span></div>
-              <div class="info-card green"><div class="card-topline"></div><h4>设计目标</h4><p>[在该场景中，通过有依据的关键设计手段，让具体角色获得什么体验改善；手段写机制，不列控件、步骤或验收动作]</p></div>
+              <div class="info-card green"><div class="card-topline"></div><h4>设计目标</h4><p>在[任务的关键环节]，通过[关键设计机制]，让[角色]能够[作出判断／完成行动／理解结果]，获得[明确的体验品质]。</p></div>
             </div>
+            <div class="callout blue"><strong class="callout-title">模板填写规则 · 衡量标准</strong><p>只有指标口径、测量方式和目标值都有可靠依据时，才在上方设计目标卡片中补充“衡量标准”，并注明统计周期。缺少任一项时，报告中省略整行，不显示“XX”“待定”等占位内容。</p></div>
           </div>
           <h3>现状断点与目标体验</h3>
           <div class="two-col"><div class="info-card blue"><div class="card-topline"></div><h4>现状 · AS-IS</h4><p>[用户当前路径、关键断点与来源。未知的现状不要补成想象中的流程。]</p></div><div class="info-card green"><div class="card-topline"></div><h4>目标 · TO-BE</h4><p>[用户任务会如何推进，在哪个环节得到反馈、交接或恢复支持。]</p></div></div>
@@ -528,20 +538,26 @@
 
         <section class="chapter" id="pages">
           <div class="chapter-head"><span class="chapter-index">05</span><div><h2>核心流程、页面与交互</h2><p class="chapter-desc">旅程讲协作，页面流程讲跳转；每个页面讲信息优先级和反馈。</p></div></div>
+          <p>按实际任务决定横向步骤数量：入口或页面变化、用户关键判断、跨角色交接和结果状态需要单独表达时才拆分；同一页面中的普通字段操作不拆成节点。按实际参与角色增减泳道，同一步骤由哪个角色执行，就放在哪一行；节点间用有向连线表达主路径与交接，失败返回用虚线回到目标节点。失败路径放在触发它的步骤内，写清条件、反馈、下一步与返回位置；不另设统一失败泳道。以下节点仅示意结构，真实项目可增减。</p>
           <h3>CASE 01 的页面流程</h3>
-          <div class="process-map" aria-label="页面流程与角色交接示例">
+          <div class="process-map" aria-label="页面流程与嵌入式失败分支示例">
             <div class="process-boundary"><strong>流程边界：</strong>[写明 Case 的起点与真实完成标识，避免把中间页面成功当成任务完成。]</div>
-            <div class="process-lane"><div class="process-role">主要执行者<br>[角色名称]</div><div class="process-node"><strong>01 · [入口页面]</strong>[读取任务上下文并发起操作。]<br><span class="muted">[取消或返回位置]</span></div><div class="process-node"><strong>02 · [操作页面]</strong>[完成输入、选择、校验和确认。]<br><span class="muted">[校验失败保留内容]</span></div><div class="process-node"><strong>03 · [结果 / 交接]</strong>[获得结果并向协作角色交付必要信息。]</div></div>
-            <div class="process-divider"></div>
-            <div class="process-lane collaborator"><div class="process-role">协作角色<br>[角色名称]</div><div class="process-node"><strong>04 · [接收信息]</strong>[核对前提、权限与交接物。]</div><div class="process-node"><strong>05 · [完成协作任务]</strong>[在实际环境执行并得到反馈。]</div><div class="process-node"><strong>06 · [确认完成]</strong>[反馈可观察结果，形成闭环。]</div></div>
-            <div class="process-lane"><div class="process-role" style="background:#aa741b">失败回退</div><div class="process-node error"><strong>[失败 → 定位 → 修正 → 返回验证]</strong>[保留必要上下文，说明重试、转交及重新进入的位置。]</div></div>
+            <div class="process-flow"><div class="process-grid" style="--process-cols:3; --process-min-width:900px">
+              <svg class="process-links" aria-hidden="true"></svg>
+              <div class="process-role">[主要执行者]</div>
+              <div class="process-cell" data-step="1"><div class="process-node"><div class="process-meta"><span>[入口页面]</span></div><strong>01 · [读取任务上下文]</strong>[作出开始任务所需的判断。]</div></div>
+              <div class="process-cell" data-step="2"><div class="process-node"><div class="process-meta"><span>[操作页面]</span></div><strong>02 · [完成关键选择与校验]</strong>[形成必要的判断或状态变化。]<div class="process-branch" data-return-step="2"><strong>校验失败：</strong><span>[指出原因并保留输入。]</span><em>修正后返回 → 步骤 02</em></div></div></div>
+              <div class="process-cell empty"></div>
+              <div class="process-role collaborator">[接收角色]</div><div class="process-cell empty"></div><div class="process-cell empty"></div>
+              <div class="process-cell collaborator" data-step="3"><div class="process-node"><div class="process-meta"><span>[结果页面 / 交接点]</span></div><strong>03 · [核对真实完成结果]</strong>[接收交接物并确认可观察结果。]<div class="process-branch" data-return-step="2"><strong>结果未知：</strong><span>[先查询最新状态，不直接重复提交。]</span><em>状态明确后 → 完成或返回步骤 02</em></div></div></div>
+            </div></div>
           </div>
           <h3>页面职责与信息优先级</h3>
-          <div class="table-wrap"><table><thead><tr><th>载体</th><th>用户要判断什么</th><th>优先展示</th><th>关键操作与反馈</th></tr></thead><tbody><tr><td>[入口页 / 区域]</td><td>[是否开始此任务]</td><td>[任务上下文、状态]</td><td>[进入 / 不可用原因]</td></tr><tr><td>[操作页 / 弹窗]</td><td>[如何正确完成]</td><td>[必要字段、约束]</td><td>[校验、确认、失败保留]</td></tr><tr><td>[结果页 / 详情]</td><td>[任务是否真实完成]</td><td>[结果、下一步、交接物]</td><td>[继续、返回、恢复]</td></tr></tbody></table></div>
-          <h3>分支与返回</h3><p>[说明哪些条件会改变路径；用户中断、返回或重新进入时，哪些内容与状态需要保留。]</p>
-          <h3>字段校验与关键文案 <span class="chip gray">条件必需</span></h3>
-          <p>[字段校验、跨角色或跨系统交接，以及影响判断与恢复的提示文案出现时，说明触发条件、用户可见反馈、下一步和保留内容。]</p>
-          <div class="table-wrap"><table><thead><tr><th>触发时机</th><th>界面文案 / 信息</th><th>用户下一步</th></tr></thead><tbody><tr><td>[校验失败]</td><td>[指出具体字段、原因和修正方式]</td><td>[修正并重试]</td></tr><tr><td>[结果反馈]</td><td>[说明是否真正完成及交接结果]</td><td>[查看、继续或返回]</td></tr></tbody></table></div>
+          <p>本表只维护载体、用户判断和优先信息。决定下一步的操作反馈应写入上方触发它的流程节点，避免同一规则在表格与流程中重复维护；跨页面共性状态规则放入第 06 章。</p>
+          <div class="table-wrap"><table><thead><tr><th>载体</th><th>用户要判断什么</th><th>优先展示</th></tr></thead><tbody><tr><td>[入口页 / 区域]</td><td>[是否开始此任务]</td><td>[任务上下文、状态]</td></tr><tr><td>[操作页 / 弹窗]</td><td>[如何正确完成]</td><td>[必要字段、约束]</td></tr><tr><td>[结果页 / 详情]</td><td>[任务是否真实完成]</td><td>[结果、下一步、交接物]</td></tr></tbody></table></div>
+          <h3>关键文案 <span class="chip gray">条件必需</span></h3>
+          <p>[只记录需要评审的具体界面用语；触发条件、用户下一步与返回位置以对应流程节点为准，不在此重复维护操作规则。]</p>
+          <div class="table-wrap"><table><thead><tr><th>文案场景</th><th>建议文案 / 信息</th><th>核查点</th></tr></thead><tbody><tr><td>[校验失败]</td><td>[指出具体字段、原因和修正方式]</td><td>[是否准确且可理解]</td></tr><tr><td>[结果反馈]</td><td>[说明是否真正完成及交接结果]</td><td>[是否与真实状态一致]</td></tr></tbody></table></div>
           <h3>页面线框 <span class="chip gray">交付模式包含线框时必需</span></h3>
           <p>[在对应页面职责下插入完整画布；图承载布局、信息优先级和关键区域，文字说明交互规则。没有平台证据时，不把候选入口画成既定事实。]</p>
           <div class="wireframe-grid" aria-label="页面线框展示示例">
@@ -702,6 +718,61 @@
       };
       new ResizeObserver(draw).observe(flow);
       if (document.fonts && document.fonts.ready) document.fonts.ready.then(draw); else draw();
+    })();
+    (() => {
+      const ns = 'http://www.w3.org/2000/svg';
+      document.querySelectorAll('.process-grid').forEach((grid, gridIndex) => {
+        const svg = grid.querySelector('.process-links');
+        if (!svg) return;
+        const make = (tag, attrs) => {
+          const node = document.createElementNS(ns, tag);
+          Object.entries(attrs).forEach(([key, value]) => node.setAttribute(key, value));
+          return node;
+        };
+        const draw = () => {
+          const base = grid.getBoundingClientRect();
+          const width = grid.clientWidth, height = grid.clientHeight;
+          svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+          svg.replaceChildren();
+          const defs = make('defs', {});
+          [['main', '#6b9fc7'], ['return', '#c18a2a']].forEach(([kind, color]) => {
+            const marker = make('marker', { id: `process-${kind}-${gridIndex}`, viewBox: '0 0 10 10', refX: '9', refY: '5', markerWidth: '6', markerHeight: '6', orient: 'auto' });
+            marker.appendChild(make('path', { d: 'M0 0 L10 5 L0 10Z', fill: color }));
+            defs.appendChild(marker);
+          });
+          svg.appendChild(defs);
+          const box = element => {
+            const r = element.getBoundingClientRect();
+            return { l: r.left - base.left, r: r.right - base.left, t: r.top - base.top, b: r.bottom - base.top, w: r.width, h: r.height };
+          };
+          const cells = [...grid.querySelectorAll('.process-cell[data-step]')].sort((a, b) => Number(a.dataset.step) - Number(b.dataset.step));
+          const byStep = new Map(cells.map(cell => [Number(cell.dataset.step), cell]));
+          cells.slice(0, -1).forEach((cell, index) => {
+            const from = box(cell), to = box(cells[index + 1]);
+            const x1 = from.r + 4, y1 = from.t + Math.min(from.h / 2, 62);
+            const x2 = to.l - 7, y2 = to.t + Math.min(to.h / 2, 62);
+            const middle = (x1 + x2) / 2;
+            const d = Math.abs(y1 - y2) < 6 ? `M ${x1} ${y1} L ${x2} ${y2}` : `M ${x1} ${y1} H ${middle} V ${y2} H ${x2}`;
+            svg.appendChild(make('path', { d, 'marker-end': `url(#process-main-${gridIndex})` }));
+          });
+          let returnIndex = 0;
+          grid.querySelectorAll('.process-branch[data-return-step]').forEach(branch => {
+            const source = branch.closest('.process-cell[data-step]');
+            const target = byStep.get(Number(branch.dataset.returnStep));
+            if (!source || !target || Number(target.dataset.step) >= Number(source.dataset.step)) return;
+            const from = box(branch), sourceBox = box(source), to = box(target);
+            const x1 = from.l - 4, y1 = from.t + from.h / 2;
+            const routeX = sourceBox.l - 16;
+            const railY = height - 17 - (returnIndex++ % 5) * 8;
+            const targetX = to.l + to.w / 2, targetY = to.b + 5;
+            const d = `M ${x1} ${y1} H ${routeX} V ${railY} H ${targetX} V ${targetY}`;
+            svg.appendChild(make('path', { d, class: 'return', 'marker-end': `url(#process-return-${gridIndex})` }));
+          });
+        };
+        new ResizeObserver(draw).observe(grid);
+        window.addEventListener('resize', draw);
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(draw); else draw();
+      });
     })();
   </script>
 </body>
